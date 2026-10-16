@@ -1,0 +1,15 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorisation code</title>
+<style>body{font:16px/1.5 system-ui,sans-serif;max-width:40rem;margin:3rem auto;padding:0 1rem}code{display:block;word-break:break-all;background:#f3f3f3;padding:1rem;border-radius:6px}</style>
+<h1>Authorisation code</h1>
+<p id="msg">Reading the code from the address bar…</p>
+<code id="code"></code>
+<p>Copy it into <code style="display:inline;padding:0 .3rem">fleet.sh exchange</code> within a few minutes. Nothing on this page is sent anywhere.</p>
+<script>
+const q = new URLSearchParams(location.search);
+const code = q.get("code"), err = q.get("error");
+document.getElementById("msg").textContent = code ? "Code:" : (err ? "Error: " + err : "No code in the URL.");
+document.getElementById("code").textContent = code || "";
+</script>
